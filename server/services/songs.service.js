@@ -39,7 +39,7 @@ class SongService {
   }
 
   /**
-   * TODO : Implémenter l'inversement de l'état aimé d'une chanson
+   * TODO DONE: Implémenter l'inversement de l'état aimé d'une chanson
    *
    * Modifie l'état aimé d'une chanson par l'état inverse
    * @param {number} id identifiant de la chanson
@@ -52,7 +52,7 @@ class SongService {
   }
 
   /**
-   * TODO : Implémenter la recherche pour les 3 champs des chansons. Astuce : utilisez l'opérateur '$or' de MongoDB
+   * TODO DONE: Implémenter la recherche pour les 3 champs des chansons. Astuce : utilisez l'opérateur '$or' de MongoDB
    *
    * Cherche et retourne les chansons qui ont un mot clé spécifique dans leur description (name, artist, genre)
    * Si le paramètre 'exact' est TRUE, la recherche est sensible à la case
