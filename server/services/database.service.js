@@ -3,11 +3,19 @@ const DB_CONSTS = require("../utils/env");
 
 class DatabaseService {
   /**
-   * TODO : Remplir une collection de données seulement si la collection est vide
+   * TODO DONE: Remplir une collection de données seulement si la collection est vide
    * @param {string} collectionName nom de la collection sur MongoDB
    * @param {Array} data tableau contenant les documents à mettre dans la collection
    */
-  async populateDb (collectionName, data) {}
+  async populateDb (collectionName, data) {
+    this.connectToServer(DB_CONSTS.DB_URL);
+    const collection = this.db.collection(collectionName);
+    const count = await collection.countDocuments();
+    if (count === 0) {
+      await collection.insertMany(data);
+    }
+
+  }
 
   // Méthode pour établir la connection entre le serveur Express et la base de données MongoDB
   async connectToServer (uri) {
