@@ -58,7 +58,7 @@ class PlaylistService {
   async updatePlaylist (playlist) {
     // delete playlist._id; // _id est immutable PAS CERTAIN DE SI IL FAUT GARDER CETTE LIGNE OU NON, ELLE A ETE DONNÉ, LES TESTS PASSENT SANS, A VOIR
     await this.savePlaylistThumbnail(playlist);
-    await this.collection.findOneAndReplace({ id: playlist.id }, playlist);
+    await this.collection.updateOne({id: playlist.id}, {$set: playlist});
   }
 
   /**
@@ -126,8 +126,14 @@ class PlaylistService {
    * @returns toutes les playlists qui ont le mot clé cherché dans leur contenu (name, description)
    */
   async search (substring, exact) {
-    const filter = { name: { $regex: `${substring}`, $options: "i" } };
-    const playlists = await this.collection.find(filter).toArray();
+    const filter = { $or: [{ name: { $regex: `${substring}`, $options: "i" } }, { description: { $regex: `${substring}`, $options: "i" } }] };
+    let playlists;
+    if (exact) {
+      filter.$or = [{ name: { $regex: `${substring}` } }, { description: { $regex: `${substring}` } }];
+      playlists = await this.collection.find(filter).toArray();
+    } else {
+      playlists = await this.collection.find(filter).toArray();
+    }
     return playlists;
   }
 
