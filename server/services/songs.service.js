@@ -16,24 +16,26 @@ class SongService {
   }
 
   /**
-   * TODO : Implémenter la récupération de toutes les chansons
+   * TODO DONE: Implémenter la récupération de toutes les chansons
    *
    * Retourne la liste de toutes les chansons
    * @returns {Promise<Array>}
    */
   async getAllSongs () {
-    return [];
+    const songs = this.collection.find({}).toArray();
+    return songs;
   }
 
   /**
-   * TODO : Implémenter la récupération d'une chanson en fonction de son id
+   * TODO DONE: Implémenter la récupération d'une chanson en fonction de son id
    *
    * Retourne une chanson en fonction de son id
    * @param {number} id identifiant de la chanson
    * @returns chanson correspondant à l'id
    */
   async getSongById (id) {
-    return { id: -1 };
+    const song  = await this.collection.findOne({id});
+    return song;
   }
 
   /**
@@ -44,7 +46,9 @@ class SongService {
    * @returns {boolean} le nouveau état aimé de la chanson
    */
   async updateSongLike (id) {
-    return false;
+    const song = await this.getSongById(id);
+    const newSong = await this.collection.findOneAndUpdate({id}, {$set: {liked: !song.liked}});
+    return newSong.value.liked;
   }
 
   /**
@@ -58,8 +62,20 @@ class SongService {
    * @returns toutes les chansons qui ont le mot clé cherché dans leur contenu (name, artist, genre)
    */
   async search (substring, exact) {
-    const filter = { name: { $regex: `${substring}`, $options: "i" } };
-    const songs = await this.collection.find(filter).toArray();
+    let songs;
+    const filter = { $or: [{ name: { $regex: `${substring}`, $options: "i" } }, 
+    { artist: { $regex: `${substring}`, $options: "i" } }, 
+    { genre: { $regex: `${substring}`, $options: "i" } }] 
+    };
+    if(exact){
+      filter.$or =  [{ name: { $regex: `${substring}`} }, 
+      { artist: { $regex: `${substring}`}}, 
+      { genre: { $regex: `${substring}`}}];
+
+      songs = await this.collection.find(filter).toArray();
+    } else {
+      songs = await this.collection.find(filter).toArray();
+    }
     return songs;
   }
 

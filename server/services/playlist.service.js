@@ -116,7 +116,7 @@ class PlaylistService {
   }
 
   /**
-   * TODO : Implémenter la recherche pour les 3 champs des playlists. Astuce : utilisez l'opérateur '$or' de MongoDB
+   * TODO DONE: Implémenter la recherche pour les 3 champs des playlists. Astuce : utilisez l'opérateur '$or' de MongoDB
    *
    * Cherche et retourne les playlists qui ont un mot clé spécifique dans leur description (name, description)
    * Si le paramètre 'exact' est TRUE, la recherche est sensible à la case
