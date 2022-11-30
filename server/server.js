@@ -36,7 +36,7 @@ let songService = new SongService(); //AJOUTE PAR MOI
 
 const server = app.listen(PORT, () => {
   dbService.connectToServer(DB_CONSTS.DB_URL).then(() => {
-    // TODO : populer la BD avec les valeurs par défaut
+    // TODO DONE: populer la BD avec les valeurs par défaut
     playlistService.populateDb();
     songService.populateDb();
     // eslint-disable-next-line no-console
