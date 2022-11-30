@@ -69,7 +69,7 @@ describe("Playlist Service", () => {
     jest.spyOn(playlistService, "savePlaylistThumbnail").mockImplementation(() => {
       return Promise.resolve();
     });
-    const updatedPlaylist = { ...playlists[0] };
+    const updatedPlaylist = { ...playlists[0]};
     const newName = "Updated Playlist";
     updatedPlaylist.name = newName;
     await playlistService.updatePlaylist(updatedPlaylist);

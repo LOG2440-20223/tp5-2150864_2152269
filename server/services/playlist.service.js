@@ -17,7 +17,7 @@ class PlaylistService {
   }
 
   /**
-   * TODO : Implémenter la récupération de toutes les playlists
+   * TODO DONE: Implémenter la récupération de toutes les playlists
    * Retourne toutes les playlists disponibles
    * @returns {Promise<Array>} la liste de toutes les playlists
    */
@@ -27,17 +27,18 @@ class PlaylistService {
   }
 
   /**
-   * TODO : Implémenter la récupération d'une playlist en fonction de son id
+   * TODO DONE: Implémenter la récupération d'une playlist en fonction de son id
    * Retourne une playlist en fonction de son id
    * @param {string} id
    * @returns Retourne la playlist en fonction de son id
    */
   async getPlaylistById (id) {
-    return { id: -1 };
+    const playlist = await this.collection.findOne({id});
+    return playlist;
   }
 
   /**
-   * TODO : Implémenter l'ajout d'une nouvelle playlist
+   * TODO  DONE: Implémenter l'ajout d'une nouvelle playlist
    * Ajoute une playlist dans le fichier de toutes les playlists
    * @param {Object} playlist nouvelle playlist à ajouter
    * @returns retourne la playlist ajoutée
@@ -45,17 +46,19 @@ class PlaylistService {
   async addPlaylist (playlist) {
     playlist.id = randomUUID();
     await this.savePlaylistThumbnail(playlist);
+    this.collection.insertOne(playlist);
     return playlist;
   }
 
   /**
-   * TODO : Implémenter la mise à jour d'une playlit existante
+   * TODO DONE: Implémenter la mise à jour d'une playlit existante
    * Modifie une playlist en fonction de son id et met à jour le fichier de toutes les playlists
    * @param {Object} playlist nouveau contenu de la playlist
    */
   async updatePlaylist (playlist) {
-    delete playlist._id; // _id est immutable
+    // delete playlist._id; // _id est immutable PAS CERTAIN DE SI IL FAUT GARDER CETTE LIGNE OU NON, ELLE A ETE DONNÉ, LES TESTS PASSENT SANS, A VOIR
     await this.savePlaylistThumbnail(playlist);
+    await this.collection.findOneAndReplace({ id: playlist.id }, playlist);
   }
 
   /**

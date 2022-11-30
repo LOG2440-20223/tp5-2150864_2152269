@@ -7,6 +7,9 @@ const DB_CONSTS = require("./utils/env");
 const { dbService } = require('./services/database.service');
 const cors = require("cors");
 
+const { PlaylistService } = require("./services/playlist.service"); //AJOUTER PAR MOI
+const { SongService } = require("./services/songs.service"); //AJOUTER PAR MOI
+
 const app = express();
 const PORT = 5020;
 const SIZE_LIMIT = "10mb";
@@ -28,9 +31,14 @@ app.use("/api/songs", songsRouter.router);
 app.use("/api/playlists", playlistsRouter.router);
 app.use("/api/search", searchBarRouter.router);
 
+let playlistService = new PlaylistService(); //AJOUTE PAR MOI
+let songService = new SongService(); //AJOUTE PAR MOI
+
 const server = app.listen(PORT, () => {
   dbService.connectToServer(DB_CONSTS.DB_URL).then(() => {
     // TODO : populer la BD avec les valeurs par défaut
+    playlistService.populateDb();
+    songService.populateDb();
     // eslint-disable-next-line no-console
     console.log(`Listening on port ${PORT}.`);
   });
