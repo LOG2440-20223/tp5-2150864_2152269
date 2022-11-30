@@ -5,7 +5,8 @@ import { SERVER_URL } from "../assets/js/consts";
 import { NavLink, useParams } from "react-router-dom";
 
 export default function Playlist() {
-  // TODO : récupérer une référence vers l'instance de HTTPManager
+  // TODO DONE : récupérer une référence vers l'instance de HTTPManager
+  const api = useContext(PlaylistContext).api;
   const params = useParams();
   const [playlist, setPlaylist] = useState({});
   const [songs, setSongs] = useState([]);

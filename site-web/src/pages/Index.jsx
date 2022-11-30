@@ -34,15 +34,15 @@ export default function Index() {
       <main id="main-area" className="flex-column">
         {/*TODO DONE: ajouter la barre de recherche*/}
         <div id="search-bar">
-        <form id="search-form" class="flex-row">
-          <input id="search-input" type="text" />
-          <button id="search-btn" class="fa fa-2x fa-search" type="submit"></button>
-          <section id="exact-parent" class="flex-row">
-            <input id="exact-search" type="checkbox" />
-            <label for="exact-search">Exact</label>
-          </section>
-        </form>
-      </div>
+          <form id="search-form" class="flex-row">
+            <input id="search-input" type="text" />
+              <button id="search-btn" class="fa fa-2x fa-search" type="submit"></button>
+              <section id="exact-parent" class="flex-row">
+                <input id="exact-search" type="checkbox" />
+                <label for="exact-search">Exact</label>
+              </section>
+          </form>
+        </div>
         <div id="playlist-list">
           <h1>Mes Playlists</h1>
           <section id="playlist-container" className="playlist-container">
