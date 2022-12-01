@@ -7,14 +7,14 @@ export default function Song({ song, index }) {
   const { dispatch } = useContext(PlaylistContext);
   const [liked, setLiked] = useState(song.liked);
   // TODO Peut-etre done: envoyer une demande de modification au serveur et mettre l'interface à jour.
-  useContext(PlaylistContext).api // a verifier si cest bon
-    .updateSong(song.id, { liked: liked })
-    .then((song) => {
-      dispatch({ type: ACTIONS.UPDATE_SONG, payload: song });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  // useContext(PlaylistContext).api // a verifier si cest bon
+  //   .updateSong(song.id, { liked: liked })
+  //   .then((song) => {
+  //     dispatch({ type: ACTIONS.UPDATE_SONG, payload: song });
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
     
   const toggleLike = () => {
     setLiked(!liked);
@@ -32,10 +32,10 @@ export default function Song({ song, index }) {
       }}
     >
       {index ? <span>{index}</span> : <></>}
-      {/*TODO : ajouter les bonnes informations de la chanson */}
-      <p>Whip</p>
-      <p>Electronic</p>
-      <p>prazkhanal</p>
+      {/*TODO DONE: ajouter les bonnes informations de la chanson */}
+      <p>{song.name}</p>
+      <p>{song.genre}</p>
+      <p>{song.artist}</p>
 
       {/*TODO : modifier le statut aimé seulement si index n'existe pas */}
       <button

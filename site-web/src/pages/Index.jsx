@@ -59,9 +59,9 @@ export default function Index() {
         <div id="songs-list">
           <h1>Mes Chansons</h1>
           {/*TODO : afficher les chansons dans la page*/
-            /* songs.map((song) => (
+             songs.map((song) => (
               <Song key ={song.id} song = {song} />
-              ))} */}
+              ))} 
         </div>
       </main>
     </>
