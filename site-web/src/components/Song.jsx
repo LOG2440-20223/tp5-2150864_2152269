@@ -7,7 +7,6 @@ export default function Song({ song, index }) {
   const { dispatch } = useContext(PlaylistContext);
   const [liked, setLiked] = useState(song.liked);
   // TODO DONE dans toggleLike : envoyer une demande de modification au serveur et mettre l'interface à jour.
-  // useContext(PlaylistContext).api
 
   const toggleLike = () => {
     if (index === undefined){

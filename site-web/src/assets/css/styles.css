@@ -18,6 +18,10 @@ h1 {
     border-radius: 3px;
 }
 
+#now-playing {
+    width: 180px;
+}
+
 .flex-column {
     display: flex;
     flex-direction: column;

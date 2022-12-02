@@ -56,7 +56,7 @@ class PlaylistService {
    * @param {Object} playlist nouveau contenu de la playlist
    */
   async updatePlaylist (playlist) {
-    // delete playlist._id; // _id est immutable PAS CERTAIN DE SI IL FAUT GARDER CETTE LIGNE OU NON, ELLE A ETE DONNÉ, LES TESTS PASSENT SANS, A VOIR
+    delete playlist._id; // _id est immutable
     await this.savePlaylistThumbnail(playlist);
     await this.collection.updateOne({id: playlist.id}, {$set: playlist});
   }

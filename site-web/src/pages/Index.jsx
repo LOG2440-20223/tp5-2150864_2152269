@@ -22,7 +22,7 @@ export default function Index() {
   }, []);
 
   /**
-   * TODO : implémenter la recherche et la mise à jour de l'interface
+   * TODO DONE: implémenter la recherche et la mise à jour de l'interface
    * Effectue une recherche par mot clé sur le serveur.
    * Si exactMatch = true, la recherche est sensible à la case
    * @param {Event} event evenement de soumission à bloquer pour ne pas rafraichir la page
@@ -31,7 +31,10 @@ export default function Index() {
    */
   const handleSearch = async (event, query, exactMatch) => {
     event.preventDefault();
-    // TODO : implémenter la recherche et la mise à jour de l'interface
+    // TODO DONE: implémenter la recherche et la mise à jour de l'interface
+    const objectsToLoad = await api.search(query, exactMatch);
+    setSongs(objectsToLoad.songs);
+    setPlaylists(objectsToLoad.playlists);
   };
 
   return (
