@@ -3,6 +3,7 @@ import { ACTIONS } from "../reducers/reducer";
 import PlaylistContext from "../contexts/PlaylistContext";
 import { SERVER_URL } from "../assets/js/consts";
 import { NavLink, useParams } from "react-router-dom";
+import Song from "../components/Song";
 
 export default function Playlist() {
   // TODO DONE : récupérer une référence vers l'instance de HTTPManager
@@ -45,8 +46,11 @@ export default function Playlist() {
           </NavLink>
         </header>
         <section id="song-container" className="flex-column">
-          {/*TODO : afficher les chansons dans la page. 
+          {/*TODO DONE: afficher les chansons dans la page. 
           Chaque chanson doit avoir un numéro commençant par 1 qui indique son ordre dans la liste*/}
+          {songs.map((song, index) => (
+            <Song key = {song.id} song = {song} index = {index + 1}/>
+          ))}
         </section>
       </div>
     </main>
