@@ -21,8 +21,8 @@ export default function Footer() {
     <footer id="playing-bar">
       {loadPlayer(useLocation().pathname)}
       <div id="creators">
-        <p>étudiant.e 1 matricule</p>
-        <p>étudiant.e 2 matricule</p>
+        <p>Simon Denis 2152269</p>
+        <p>Thomas Villeneuve 2150864</p>
       </div>
     </footer>
   );

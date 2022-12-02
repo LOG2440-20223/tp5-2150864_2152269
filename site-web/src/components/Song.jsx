@@ -6,22 +6,9 @@ import PlaylistContext from "../contexts/PlaylistContext";
 export default function Song({ song, index }) {
   const { dispatch } = useContext(PlaylistContext);
   const [liked, setLiked] = useState(song.liked);
-  // TODO Peut-etre done: envoyer une demande de modification au serveur et mettre l'interface à jour.
-  useContext(PlaylistContext).api
-  .updateSong(song.id, { liked: !liked })
-  .then((song) => {
-    dispatch({ type: ACTIONS.UPDATE_SONG, song });
-  });
+  // TODO DONE dans toggleLike : envoyer une demande de modification au serveur et mettre l'interface à jour.
+  // useContext(PlaylistContext).api
 
-  // useContext(PlaylistContext).api // a verifier si cest bon
-  //   .updateSong(song.id, { liked: liked })
-  //   .then((song) => {
-  //     dispatch({ type: ACTIONS.UPDATE_SONG, payload: song });
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
-    
   const toggleLike = () => {
     if (index === undefined){
       setLiked(!liked);
@@ -29,8 +16,10 @@ export default function Song({ song, index }) {
   };
   
 
-  // TODO : envoyer une action PLAY avec le bon index au reducer.
-  const playSong = () => {};
+  // TODO DONE: envoyer une action PLAY avec le bon index au reducer.
+  const playSong = () => {
+    dispatch({ type: ACTIONS.PLAY, payload: { index : (index -1) } });
+  };
   return (
     <section
       className="song-item flex-row"
