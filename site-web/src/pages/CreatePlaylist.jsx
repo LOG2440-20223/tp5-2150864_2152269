@@ -39,17 +39,16 @@ export default function CreatePlaylist() {
     event.preventDefault();
     if (!data.name || !data.description || !data.thumbnail) return;
     // TODO DONE: envoyer la bonne requête pour ajouter ou modifier une playlist en fonction de l'attribut params.id
-    // const playlist = {...data, id : params.id};
     console.log(data);
     if(params.id !== undefined){
-      api.updatePlaylist(data);
-      console.log("modif")
+      api.updatePlaylist(data).then(() => {
+        navigate("/index")
+        });
     }else{
-      console.log("add")
-      api.addNewPlaylist(data);
+      api.addNewPlaylist(data).then(() => {
+        navigate("/index")
+        });
     }
-    navigate("/index");
-
   };
 
   const addItemSelect = (event) => {
@@ -122,9 +121,10 @@ export default function CreatePlaylist() {
 
   // TODO DONE: Envoyer une requête de supression au serveur et naviguer vers la page principale
   const deletePlaylist = async (id) => {
-    api.deletePlaylist(id);
-    navigate("/index");
-  };
+    api.deletePlaylist(id).then(() => {
+      navigate("/index")
+      });
+    };
 
   const loadForEdit = async (playlist) => {
     const blob = await (await fetch(`${SERVER_URL}/${playlist.thumbnail}`)).blob();
