@@ -47,12 +47,13 @@ class SongService {
    */
   async updateSongLike (id) {
     const song = await this.getSongById(id);
-    let newSong;
-    if(song != null){ // Jai du mettre sa sinon yavait un error cannot read null jsp pk 
-      newSong =  await this.collection.findOneAndUpdate({id}, {$set: {liked: !song.liked}});
-      return newSong.value.liked;
+    try{
+      this.collection.findOneAndUpdate({id}, {$set: {liked: !song.liked}}).then( (newSong) => {
+        return newSong.value.liked;
+      }); 
+    } catch (err) {
+      window.alert(err);
     }
-    return false;
   }
 
   /**
