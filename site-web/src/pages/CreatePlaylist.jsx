@@ -39,7 +39,6 @@ export default function CreatePlaylist() {
     event.preventDefault();
     if (!data.name || !data.description || !data.thumbnail) return;
     // TODO DONE: envoyer la bonne requête pour ajouter ou modifier une playlist en fonction de l'attribut params.id
-    console.log(data);
     if(params.id !== undefined){
       api.updatePlaylist(data).then(() => {
         navigate("/index")
@@ -116,6 +115,7 @@ export default function CreatePlaylist() {
   const handleFileChange = async (event) => {
     setPreview(URL.createObjectURL(event.target.files[0]));
     const image = await getImageInput(event.target);
+    console.log(image);
     setData({ ...data, thumbnail: image });
   };
 
