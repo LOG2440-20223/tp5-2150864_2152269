@@ -46,15 +46,11 @@ class SongService {
    * @returns {boolean} le nouveau état aimé de la chanson
    */
   async updateSongLike (id) {
-    const song = await this.getSongById(id);
-    try{
-      this.collection.findOneAndUpdate({id}, {$set: {liked: !song.liked}}).then( (newSong) => {
-        return newSong.value.liked;
-      }); 
-    } catch (err) {
-      window.alert(err);
-    }
+    const song = await this.getSongById(parseInt(id));
+    await this.collection.updateOne({id : parseInt(id)}, {$set: {liked: !song.liked}});
+    return !song.liked;
   }
+  
 
   /**
    * TODO DONE: Implémenter la recherche pour les 3 champs des chansons. Astuce : utilisez l'opérateur '$or' de MongoDB
