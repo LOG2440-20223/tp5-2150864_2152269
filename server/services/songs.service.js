@@ -34,7 +34,7 @@ class SongService {
    * @returns chanson correspondant à l'id
    */
   async getSongById (id) {
-    const song  = await this.collection.findOne({id});
+    const song = await this.collection.findOne({ id });
     return song;
   }
 
@@ -47,10 +47,9 @@ class SongService {
    */
   async updateSongLike (id) {
     const song = await this.getSongById(parseInt(id));
-    await this.collection.updateOne({id : parseInt(id)}, {$set: {liked: !song.liked}});
+    await this.collection.updateOne({ id: parseInt(id) }, { $set: { liked: !song.liked } });
     return !song.liked;
   }
-  
 
   /**
    *  Implémenter la recherche pour les 3 champs des chansons. Astuce : utilisez l'opérateur '$or' de MongoDB
@@ -64,14 +63,15 @@ class SongService {
    */
   async search (substring, exact) {
     let songs;
-    const filter = { $or: [{ name: { $regex: `${substring}`, $options: "i" } }, 
-    { artist: { $regex: `${substring}`, $options: "i" } }, 
-    { genre: { $regex: `${substring}`, $options: "i" } }] 
+    const filter = {
+      $or: [{ name: { $regex: `${substring}`, $options: "i" } },
+        { artist: { $regex: `${substring}`, $options: "i" } },
+        { genre: { $regex: `${substring}`, $options: "i" } }]
     };
-    if(exact){
-      filter.$or =  [{ name: { $regex: `${substring}`} }, 
-      { artist: { $regex: `${substring}`}}, 
-      { genre: { $regex: `${substring}`}}];
+    if (exact) {
+      filter.$or = [{ name: { $regex: `${substring}` } },
+        { artist: { $regex: `${substring}` } },
+        { genre: { $regex: `${substring}` } }];
 
       songs = await this.collection.find(filter).toArray();
     } else {
