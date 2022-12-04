@@ -7,8 +7,8 @@ const DB_CONSTS = require("./utils/env");
 const { dbService } = require('./services/database.service');
 const cors = require("cors");
 
-const { PlaylistService } = require("./services/playlist.service"); 
-const { SongService } = require("./services/songs.service"); 
+const { PlaylistService } = require("./services/playlist.service");
+const { SongService } = require("./services/songs.service");
 
 const app = express();
 const PORT = 5020;
@@ -31,7 +31,7 @@ app.use("/api/songs", songsRouter.router);
 app.use("/api/playlists", playlistsRouter.router);
 app.use("/api/search", searchBarRouter.router);
 
-const playlistService = new PlaylistService(); 
+const playlistService = new PlaylistService();
 const songService = new SongService();
 
 const server = app.listen(PORT, () => {

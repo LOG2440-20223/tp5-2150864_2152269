@@ -33,7 +33,7 @@ class PlaylistService {
    * @returns Retourne la playlist en fonction de son id
    */
   async getPlaylistById (id) {
-    const playlist = await this.collection.findOne({id});
+    const playlist = await this.collection.findOne({ id });
     return playlist;
   }
 
@@ -58,7 +58,7 @@ class PlaylistService {
   async updatePlaylist (playlist) {
     delete playlist._id; // _id est immutable
     await this.savePlaylistThumbnail(playlist);
-    await this.collection.updateOne({id: playlist.id}, {$set: playlist});
+    await this.collection.updateOne({ id: playlist.id }, { $set: playlist });
   }
 
   /**
