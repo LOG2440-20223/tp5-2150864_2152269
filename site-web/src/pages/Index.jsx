@@ -13,7 +13,6 @@ export default function Index() {
       .fetchAllPlaylists()
       .then((playlists) => setPlaylists(playlists))
       .catch(() => setPlaylists([]));
-    // TODO DONE: récupérer les chansons du serveur
     api
     .fetchAllSongs()
     .then((songs) => setSongs(songs))
@@ -22,7 +21,6 @@ export default function Index() {
   }, []);
 
   /**
-   * TODO DONE: implémenter la recherche et la mise à jour de l'interface
    * Effectue une recherche par mot clé sur le serveur.
    * Si exactMatch = true, la recherche est sensible à la case
    * @param {Event} event evenement de soumission à bloquer pour ne pas rafraichir la page
@@ -31,7 +29,6 @@ export default function Index() {
    */
   const handleSearch = async (event, query, exactMatch) => {
     event.preventDefault();
-    // TODO DONE: implémenter la recherche et la mise à jour de l'interface
     const objectsToLoad = await api.search(query, exactMatch);
     setSongs(objectsToLoad.songs);
     setPlaylists(objectsToLoad.playlists);
@@ -40,7 +37,6 @@ export default function Index() {
   return (
     <>
       <main id="main-area" className="flex-column">
-        {/*TODO DONE: ajouter la barre de recherche*/}
         <SearchBar handleSearch={handleSearch}/>
         <div id="playlist-list">
           <h1>Mes Playlists</h1>
@@ -52,10 +48,9 @@ export default function Index() {
         </div>
         <div id="songs-list">
           <h1>Mes Chansons</h1>
-          {/*TODO DONE: afficher les chansons dans la page*/
-             songs.map((song) => (
-              <Song key ={song.id} song = {song}/>
-              ))} 
+            {songs.map((song) => (
+            <Song key ={song.id} song = {song}/>
+            ))} 
         </div>
       </main>
     </>

@@ -16,7 +16,7 @@ class SongService {
   }
 
   /**
-   * TODO DONE: Implémenter la récupération de toutes les chansons
+   *  Implémenter la récupération de toutes les chansons
    *
    * Retourne la liste de toutes les chansons
    * @returns {Promise<Array>}
@@ -27,7 +27,7 @@ class SongService {
   }
 
   /**
-   * TODO DONE: Implémenter la récupération d'une chanson en fonction de son id
+   *  Implémenter la récupération d'une chanson en fonction de son id
    *
    * Retourne une chanson en fonction de son id
    * @param {number} id identifiant de la chanson
@@ -39,7 +39,7 @@ class SongService {
   }
 
   /**
-   * TODO DONE: Implémenter l'inversement de l'état aimé d'une chanson
+   *  Implémenter l'inversement de l'état aimé d'une chanson
    *
    * Modifie l'état aimé d'une chanson par l'état inverse
    * @param {number} id identifiant de la chanson
@@ -53,7 +53,7 @@ class SongService {
   
 
   /**
-   * TODO DONE: Implémenter la recherche pour les 3 champs des chansons. Astuce : utilisez l'opérateur '$or' de MongoDB
+   *  Implémenter la recherche pour les 3 champs des chansons. Astuce : utilisez l'opérateur '$or' de MongoDB
    *
    * Cherche et retourne les chansons qui ont un mot clé spécifique dans leur description (name, artist, genre)
    * Si le paramètre 'exact' est TRUE, la recherche est sensible à la case

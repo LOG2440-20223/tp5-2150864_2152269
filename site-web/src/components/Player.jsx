@@ -15,33 +15,27 @@ export default function Player() {
     dispatch({ type: ACTIONS.PLAY, payload: { index: -1 } });
   };
 
-  // TODO DONE: ajouter une action de jouer la prochaine chanson
   const playNextSong = () => {
     dispatch({ type: ACTIONS.NEXT });
   };
 
-  // TODO DONE: ajouter une action de jouer la chanson précédante
   const playPreviousSong = () => {
     dispatch({ type: ACTIONS.PREVIOUS });
 
   };
 
-  // TODO DONE: ajouter une action de déplacement dans la barre de progrès
   const seek = (newTime) => {
     dispatch({ type: ACTIONS.SEEK, payload: { time: newTime } });
   };
 
-  // TODO DONE: ajouter une action d'avancement/recul dans la chanson
   const scrubTime = (delta) => {
     dispatch({ type: ACTIONS.SCRUB, payload: { delta: delta } });
   };
 
-  // TODO DONE: ajouter une action de fermer/ouvrir le son
   const muteToggle = () => {
     dispatch({ type: ACTIONS.MUTE });
   };
 
-  // TODO DONE: ajouter une action d'activer ou désactiver le mode "shuffle"
   const shuffleToggle = () => {
     dispatch({ type: ACTIONS.SHUFFLE });
    };
@@ -111,9 +105,7 @@ export default function Player() {
           ></button>
         </section>
         <section id="timeline-container" className="flex-row">
-          {/*TODO DONE: afficher le temps en cours de la chanson */}
           <span id="timeline-current">{currentTime}</span>
-          {/*TODO DONE: afficher le progrès de la chanson */}
           <input
             id="timeline"
             type="range"

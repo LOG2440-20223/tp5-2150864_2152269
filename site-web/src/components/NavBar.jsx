@@ -7,14 +7,12 @@ export default function NavBar() {
       <nav id="nav-bar" className="flex-column">
         <ul className="flex-column">
           <li>
-            {/*TODO DONE: ajouter le lien de navigation vers la page /index */}
             <NavLink to = "/index" className={({isActive}) => isActive ? "active-page" : "none"}>
               <i className="fa fa-music"></i>
               <span>Ma Bibliothèque</span>
             </NavLink>
           </li>
           <li>
-            {/*TODO DONE: ajouter le lien de navigation vers la page /create_playlist */}
             <NavLink to = "/create_playlist" className={({isActive}) => isActive ? "active-page" : "none"}>
               <i className="fa fa-plus"></i>
               <span>Créer Playlist</span>

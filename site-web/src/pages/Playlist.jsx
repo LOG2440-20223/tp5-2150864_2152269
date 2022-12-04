@@ -6,7 +6,6 @@ import { NavLink, useParams } from "react-router-dom";
 import Song from "../components/Song";
 
 export default function Playlist() {
-  // TODO DONE : récupérer une référence vers l'instance de HTTPManager
   const api = useContext(PlaylistContext).api;
   const params = useParams();
   const [playlist, setPlaylist] = useState({});
@@ -46,8 +45,6 @@ export default function Playlist() {
           </NavLink>
         </header>
         <section id="song-container" className="flex-column">
-          {/*TODO DONE: afficher les chansons dans la page. 
-          Chaque chanson doit avoir un numéro commençant par 1 qui indique son ordre dans la liste*/}
           {songs.map((song, index) => (
             <Song key = {song.id} song = {song} index = {index + 1}/>
           ))}
