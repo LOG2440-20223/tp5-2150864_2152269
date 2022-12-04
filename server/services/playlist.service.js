@@ -38,7 +38,7 @@ class PlaylistService {
   }
 
   /**
-   * TODO  DONE: Implémenter l'ajout d'une nouvelle playlist
+   * Implémenter l'ajout d'une nouvelle playlist
    * Ajoute une playlist dans le fichier de toutes les playlists
    * @param {Object} playlist nouvelle playlist à ajouter
    * @returns retourne la playlist ajoutée
